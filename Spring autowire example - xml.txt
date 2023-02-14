@@ -1,0 +1,87 @@
+package com.p1;
+public class Book {
+ 
+ private String bookname;
+ private int bookprice;
+ 
+ public String getBookname() {
+ return bookname;
+ }
+ public void setBookname(String bookname) {
+ this.bookname = bookname;
+ }
+ public int getBookprice() {
+ return bookprice;
+ }
+ public void setBookprice(int bookprice) {
+ this.bookprice = bookprice;
+ }    
+ 
+}
+
+package com.p1;
+public class Categories {
+ 
+ private String name;
+ private Book bk;
+ 
+ public String getName() {
+ return name;
+ }
+ 
+ public void setName(String name) {
+ this.name = name;
+ }
+ 
+ public Book getBk() {
+ return bk;
+ }
+ 
+ public void setBk(Book bk) {
+ this.bk = bk;
+ }
+ 
+ public void show()
+ {
+ System.out.println("Categories name :"+name);
+ System.out.println("Book name :"+bk.getBookname()+" and Book Price :"+bk.getBookprice());
+ }
+ 
+}
+
+package com.p1;
+ 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+ 
+public class ClientLogic {
+ 
+ public static void main(String[] args)
+ {
+ Resource res = new ClassPathResource("spconfig.xml");
+ BeanFactory factory = new XmlBeanFactory(res);
+ 
+ Object o = factory.getBean("id1");
+ Categories wb = (Categories)o;
+ 
+ wb.show();
+ 
+ }
+ 
+}
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+ 
+<beans>
+  <bean id="id1" class="com.p1.Categories" autowire="byName">
+        <property name="name" value="General Books" />
+  </bean>
+  <bean id="bk" class="com.p1.Book">
+        <property name="bookname" value="The Kids" />
+        <property name="bookprice" value="300" />
+  </bean>
+</beans>
+
