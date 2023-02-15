@@ -1,0 +1,18 @@
+1. Create a Spring Application with following POJO class
+   a. Student -student-name, marks-percentage, grade
+   Define objects with setter injection by tgaking input from console.
+
+2. To problem(1) define list of students and output the info from the list
+   a. Max and min scores,
+   b. Count of the students
+   Use stream api
+
+3. To problem(1) connect to backend database table student and demo CRUD operations
+
+4. Create a class Course with following fields
+   - courseid, course-name, course-duration
+   Add one object course-details in Student class
+   Demo autowiring
+
+
+   
